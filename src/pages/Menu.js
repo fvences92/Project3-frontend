@@ -29,7 +29,7 @@ const Menu = (props) => {
     return (
 
         <>
-        <h1>Menu Page</h1>
+        <h1>Food Menu Page</h1>
             {props.foods ? loaded() : loading()}
         </>
     )

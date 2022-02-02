@@ -1,9 +1,19 @@
+
 import { Link } from "react-router-dom";
 
 function Drinkshow (props){
+
+    const id = props.match.params.id
+    const drinks = props.drinks
+    const drinko = drinks.find(p => p._id === id )
+        
+    
     return (
-    <h1>Drink Show Page</h1>
-    )
-}
+        <div>
+            
+        <h1>{drinko._id}</h1>
+        </div>
+        )
+    }
 
 export default Drinkshow;
