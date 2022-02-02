@@ -4,6 +4,7 @@ import Menu from "../pages/Menu";
 import Drinks from "../pages/Drinks";
 import New from "../pages/New";
 import Home from "../pages/Home";
+import About from '../pages/About'
 
 function Main(props) {
     //setting useState
@@ -12,25 +13,15 @@ function Main(props) {
     const URL = 'https://project-backend-3.herokuapp.com/meals'
 
     //fetching food from backend
-    const getFood =async() => {
+    const getFood = async() => {
       const response = await fetch(URL)
-      const data = await response.json
+      const data = await response.json()
       setFood(data);
     }
 
   // CREATE FOOD
   const createFood = async (eachFood) => {
-    // make post request to create food
-    if(!props.user) return; // do not run anycode in this function if there's no user
-    const token = await props.user.getIdToken();
-    await fetch(URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "Application/JSON",
-        "Authorization": "Bearer " + token
-      },
-      body: JSON.stringify(eachFood),
-    });
+    // make post request to create foo
     // update list of food
     getFood();
   };
@@ -65,16 +56,16 @@ function Main(props) {
     <main>
       <Switch>
         <Route exact path='/'>
-        <Home/>
+        <Home foods={ foods } />
         </Route>
-        <Route path='/menu/:id'
+        <Route path='/menu/'
           render={(rp) => (
             <Menu 
             {...rp}
             />
             )}
         />
-        <Route exact path='/drinks/:id'
+        <Route exact path='/drinks/'
         render={(rp) => (
           <Drinks
           {...rp}
@@ -83,6 +74,10 @@ function Main(props) {
         />
         <Route exact path='/new'>
           <New/>
+        </Route>
+
+        <Route exact path='/about'>
+          <About/>
         </Route>
 
       </Switch>
