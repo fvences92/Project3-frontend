@@ -10,11 +10,8 @@ const Menu = (props) => {
             <div className="home-container">
                 <div key={eachFood._recipieName} className="home-inner-container">
                     <div className="image-link">
-                        <Link to={`/food/${eachFood._recipieName}`} className="link-element"><img src={eachFood.recipieThumb} alt={eachFood.recipieName} /></Link>
+                        <Link to={`/menu/${eachFood._recipeName}`} className="link-element">{eachFood.recipeName} {eachFood.price}</Link>
                     </div>
-                    <Link to={`/food/${eachFood._recipieName}`} className="link-element"><div className="title">
-                        <h3>{eachFood._recipieName}</h3>
-                    </div></Link>
                 </div>
                 <div className="footer-space-container">
                 </div>

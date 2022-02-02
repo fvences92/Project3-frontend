@@ -5,19 +5,23 @@ import Drinks from "../pages/Drinks";
 import New from "../pages/New";
 import Home from "../pages/Home";
 import About from '../pages/About'
+import Foodshow from '../pages/Foodshow'
+import Drinkshow from '../pages/Drinkshow'
 
 function Main(props) {
-    //setting useState
-  const [ foods, setFood ] = useState(null)
-    //Importing Backend URL
-    const URL = 'https://project-backend-3.herokuapp.com/meals'
+  //setting useState
+  const [foods, setFood] = useState(null)
+  const [drinks, setDrink] = useState(null)
+  //Importing Backend URL
+  const FURL = 'https://project-backend-3.herokuapp.com/meals'
+  const DURL = 'https://project-backend-3.herokuapp.com/drinks'
 
-    //fetching food from backend
-    const getFood = async() => {
-      const response = await fetch(URL)
-      const data = await response.json()
-      setFood(data);
-    }
+  //fetching food from backend
+  const getFood = async () => {
+    const response = await fetch(FURL)
+    const data = await response.json()
+    setFood(data);
+  }
 
   // CREATE FOOD
   const createFood = async (eachFood) => {
@@ -29,7 +33,7 @@ function Main(props) {
   // UPDATE FOOD
   const updateFoods = async (eachFood, id) => {
     //make PUT request to update people
-    await fetch(URL + id, {
+    await fetch(FURL + id, {
       method: "PUT",
       headers: {
         "Content-Type": "Application/JSON",
@@ -43,7 +47,7 @@ function Main(props) {
   // DELETE FOOD
   const deleteFoods = async (id) => {
     // make delete request to delete foodById
-    await fetch(URL + id, {
+    await fetch(FURL + id, {
       method: "DELETE",
     });
     // update list of food
@@ -51,38 +55,98 @@ function Main(props) {
   }
 
   useEffect(() => getFood(), []);
+  //fetching food from backend
   
+  /////////////////////////////////////////////////////
+  
+  const getDrink = async () => {
+    const response = await fetch(DURL)
+    const data = await response.json()
+    setDrink(data);
+  }
+
+  // CREATE FOOD
+  const createDrink = async (eachDrink) => {
+    // make post request to create foo
+    // update list of food
+    getDrink();
+  };
+
+  // UPDATE Drink
+  const updateDrinks = async (eachDrink, id) => {
+    //make PUT request to update people
+    await fetch(DURL + id, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "Application/JSON",
+      },
+      body: JSON.stringify(eachDrink),
+    });
+    // update list of Drink
+    getDrink();
+  };
+
+  // DELETE Drink
+  const deleteDrinks = async (id) => {
+    // make delete request to delete DrinkById
+    await fetch(DURL + id, {
+      method: "DELETE",
+    });
+    // update list of Drink
+    getDrink();
+  }
+
+  
+  useEffect(() => getDrink(), []);
+
   return (
     <main>
       <Switch>
         <Route exact path='/'>
-        <Home foods={ foods } />
+          <Home />
         </Route>
         <Route path='/menu/'
           render={(rp) => (
-            <Menu 
-            {...rp}
-            />
-            )}
+            <Menu
+              foods={foods}
+              {...rp} />
+          )}
         />
-        <Route exact path='/drinks/'
-        render={(rp) => (
-          <Drinks
-          {...rp}
-          />
-        )}
-        />
-        <Route exact path='/new'>
-          <New/>
-        </Route>
 
-        <Route exact path='/about'>
-          <About/>
+        <Route path='/menu/:id'
+          render={(rp) => (
+            <Foodshow
+              foods={foods}
+              updateFoods={updateFoods}
+              deleteFoods={deleteFoods}
+              {...rp} />
+          )}></Route>
+        <Route exact path='/drinks/'
+          render={(rp) => (
+            <Drinks
+              {...rp} />
+          )} />
+
+        <Route path='/drinks/:id'
+          render={(rp) => (
+            <Drinkshow
+              drinks={drinks}
+              updateDrinks={updateDrinks}
+              deleteDrinks={deleteDrinks}
+              {...rp} />
+          )}></Route>
+
+        <Route path='/new'>
+          <New createFood={createFood}
+            createDrink={createDrink} />
+
+        </Route><Route path='/about'>
+          <About />
         </Route>
 
       </Switch>
     </main>
-      
+
   );
 }
 
