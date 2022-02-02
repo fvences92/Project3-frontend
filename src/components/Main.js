@@ -65,7 +65,7 @@ function Main(props) {
     setDrink(data);
   }
 
-  // CREATE FOOD
+  // CREATE DRINK
   const createDrink = async (eachDrink) => {
     // make post request to create foo
     // update list of food
@@ -95,7 +95,6 @@ function Main(props) {
     // update list of Drink
     getDrink();
   }
-
   
   useEffect(() => getDrink(), []);
 
@@ -105,7 +104,8 @@ function Main(props) {
         <Route exact path='/'>
           <Home />
         </Route>
-        <Route path='/menu/'
+
+        <Route exact path='/menu/'
           render={(rp) => (
             <Menu
               foods={foods}
@@ -121,9 +121,11 @@ function Main(props) {
               deleteFoods={deleteFoods}
               {...rp} />
           )}></Route>
+
         <Route exact path='/drinks/'
           render={(rp) => (
             <Drinks
+              drinks={drinks}
               {...rp} />
           )} />
 

@@ -7,14 +7,11 @@ const Drinks = (props) => {
     // Loaded Function
     const loaded = () => {
         return props.drinks.map((eachDrink) => (
-            <div className="home-container">
-                <div key={eachDrink.name} className="home-inner-container">
+            <div key={eachDrink._id} className="home-container">
+                <div className="home-inner-container">
                     <div className="image-link">
-                        <Link to={`/drinks/${eachDrink.name}`} className="link-element"><img src={eachDrink.image} alt={eachDrink.name} /></Link>
+                        <Link to={`/drinks/${eachDrink._name}`} className="link-element">{eachDrink._name}</Link>
                     </div>
-                    <Link to={`/drinks/${eachDrink.name}`} className="link-element"><div className="title">
-                        <h3>{eachDrink.name}</h3>
-                    </div></Link>
                 </div>
                 <div className="footer-space-container">
                 </div>
