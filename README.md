@@ -18,8 +18,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Getting Started
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+[Link](https://project-backend-3.herokuapp.com/meals) to see the backend!
 
 ## Future Enhancements
 
