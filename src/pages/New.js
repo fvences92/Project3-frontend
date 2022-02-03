@@ -29,6 +29,8 @@ const New = (props) => {
     //HANDLESUBMIT FUNCTION FOR FORM
     const handleSubmitFood = (event) => {
         event.preventDefault();
+        newForm.price = parseInt(newForm.price)
+        newForm.qty = parseInt(newForm.qty)
         props.createFood(newForm);
         setNewForm({
             recipeName: "",
@@ -41,6 +43,8 @@ const New = (props) => {
     //HANDLESUBMIT FUNCTION FOR FORM
     const handleSubmitDrinks = (event) => {
         event.preventDefault();
+        newFormDrink.price = parseInt(newFormDrink.price)
+        newFormDrink.quantity = parseInt(newFormDrink.quantity)
         props.createDrink(newFormDrink);
         setNewFormDrink({
             name: "",

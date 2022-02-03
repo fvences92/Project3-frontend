@@ -7,6 +7,8 @@ import Home from "../pages/Home";
 import About from '../pages/About'
 import Foodshow from '../pages/Foodshow'
 import Drinkshow from '../pages/Drinkshow'
+import DrinkEdit from "../pages/DrinkEdit";
+import FoodEdit from "../pages/FoodEdit";
 
 function Main(props) {
   //setting useState
@@ -25,15 +27,15 @@ function Main(props) {
 
   // CREATE FOOD
   const createFood = async (eachFood) => {
-    console.log(eachFood)
-    await fetch(FURL, {
+    console.log(JSON.stringify(eachFood))
+    await fetch(FURL , {
       method: 'POST',
-      header: {
-        'Content-Type': 'Application/JSON',    
+      headers: {
+        'Content-Type': 'Application/JSON',
       },
       body: JSON.stringify(eachFood),
     })
-    // make post request to create foo
+    // make post request to create food
     // update list of food
     getFood();
   };
@@ -64,9 +66,9 @@ function Main(props) {
 
   useEffect(() => getFood(), []);
   //fetching food from backend
-  
+
   /////////////////////////////////////////////////////
-  
+
   const getDrink = async () => {
     const response = await fetch(DURL)
     const data = await response.json()
@@ -75,10 +77,10 @@ function Main(props) {
 
   // CREATE DRINK
   const createDrink = async (eachDrink) => {
-    await fetch (DURL, {
+    await fetch(DURL, {
       method: 'POST',
-      header: {
-        'Content-Type': 'Application/JSON',    
+      headers: {
+        'Content-Type': 'Application/JSON',
       },
       body: JSON.stringify(eachDrink),
     })
@@ -88,7 +90,7 @@ function Main(props) {
   // UPDATE Drink
   const updateDrinks = async (eachDrink, id) => {
     //make PUT request to update people
-    await fetch(DURL, {
+    await fetch(DURL + id, {
       method: "PUT",
       headers: {
         "Content-Type": "Application/JSON",
@@ -126,12 +128,20 @@ function Main(props) {
           )}
         />
 
-        <Route path='/menu/:id'
+        <Route exact path='/menu/:id'
           render={(rp) => (
             <Foodshow
               foods={foods}
               updateFoods={updateFoods}
               deleteFoods={deleteFoods}
+              {...rp} />
+          )}></Route>
+
+        <Route path='/menu/:id/edit'
+          render={(rp) => (
+            <FoodEdit
+              foods={foods}
+              updateFoods={updateFoods}
               {...rp} />
           )}></Route>
 
@@ -142,26 +152,34 @@ function Main(props) {
               {...rp} />
           )} />
 
-        <Route path='/drinks/:id'
+        <Route exact path='/drinks/:id'
           render={(rp) => (
             <Drinkshow
               drinks={drinks}
-              updateDrinks={updateDrinks}
               deleteDrinks={deleteDrinks}
+              {...rp} />
+          )}></Route>
+
+        <Route path='/drinks/:id/edit'
+          render={(rp) => (
+            <DrinkEdit
+              drinks={drinks}
+              updateDrinks={updateDrinks}
               {...rp} />
           )}></Route>
 
         <Route path='/new' render={(rp) =>
         (
-          <New 
+          <New
             createFood={createFood}
-            createDrink={createDrink} 
+            createDrink={createDrink}
             {...rp} />
         )}></Route>;
-      
-      <Route path='/about'>
+
+        <Route path='/about'>
           <About />
         </Route>
+
 
       </Switch>
     </main>

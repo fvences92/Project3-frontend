@@ -19,6 +19,8 @@ function Foodshow (props){
         <h2>{recipe.price}</h2>
         <h3>{recipe.qty}</h3>
         <button id='delete' onClick={removeFood}>Delete</button>
+        <Link to ={`${recipe._id}/edit`}><button>Edit</button></Link
+        >
         </div>
         )
     }

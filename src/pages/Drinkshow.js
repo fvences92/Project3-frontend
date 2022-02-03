@@ -1,4 +1,5 @@
 
+import { Zoom } from "@mui/material";
 import { Link } from "react-router-dom";
 
 function Drinkshow (props){
@@ -10,7 +11,7 @@ function Drinkshow (props){
     
     const removeDrinks = () => {
         props.deleteDrinks(drinko._id); 
-        props.history.push ('/menu') 
+        props.history.push ('/drinks') 
         }
 
     return (
@@ -20,6 +21,8 @@ function Drinkshow (props){
         <h2>{drinko.price}</h2>
         <h3>{drinko.quantity}</h3>
         <button id='delete' onClick={removeDrinks}>Delete</button>
+        <Link to ={`${drinko._id}/edit`}><button>Edit</button></Link
+        >
         </div>
         )
     }
