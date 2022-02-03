@@ -37,10 +37,11 @@ const New = (props) => {
             qty: "",
         });
     };
+    
     //HANDLESUBMIT FUNCTION FOR FORM
     const handleSubmitDrinks = (event) => {
         event.preventDefault();
-        props.createDrink(newForm);
+        props.createDrink(newFormDrink);
         setNewFormDrink({
             name: "",
             image: "",
@@ -48,33 +49,39 @@ const New = (props) => {
             quantity: "",
         });
     };
+
+
+
+
     return (
         <div className="new-box">
             <div className="title-box">
-                <h1>New Recipe Form</h1>
+                <h1>New Meal Form</h1>
             </div>
             <form onSubmit={handleSubmitFood}>
                 <div className="input-boxes">
-                    <h3>Recipe</h3>
-                    <input type="text" value={newForm.recipeName} name="title" placeholder="Name" onChange={handleChange} />
+                    <h3>Meal</h3>
+                    <input type="text" value={newForm.recipeName} name="recipeName" placeholder="Name" onChange={handleChange} />
                     <h3>Image</h3>
-                    <input type="text" value={newForm.recipeThumb} name="image" placeholder="image URL" onChange={handleChange} />
+                    <input type="text" value={newForm.recipeThumb} name="recipeThumb" placeholder="image URL" onChange={handleChange} />
                     <h3>Quantity</h3>
-                    <input type="text" value={newForm.qty} name="description" placeholder="Quantity" onChange={handleChange} />
+                    <input type="text" value={newForm.qty} name="qty" placeholder="Quantity" onChange={handleChange} />
+                    <h3>Price</h3>
+                    <input type="text" value={newForm.price} name="price" placeholder="Price" onChange={handleChange} />
                 </div>
                 <br />
-                <input type="submit" value="Create Recipe" className="post-button"/>
+                <input type="submit" value="Create Meal" className="post-button"/>
             </form>
             <form onSubmit={handleSubmitDrinks}>
-                <div className="input-boxes">
+                <div className="input-boxes1">
                     <h3>Drinks</h3>
-                    <input type="text" value={newFormDrink.name} name="title" placeholder="Name" onChange={handleChangeDrink} />
+                    <input type="text" value={newFormDrink.name} name="name" placeholder="Name" onChange={handleChangeDrink} />
                     <h3>Image</h3>
                     <input type="text" value={newFormDrink.image} name="image" placeholder="image URL" onChange={handleChangeDrink} />
-                    <h3>Quantity</h3>
-                    <input type="text" value={newFormDrink.quantity} name="description" placeholder="Quantity" onChange={handleChangeDrink} />
                     <h3>Price</h3>
-                    <input type="text" value={newFormDrink.price} name="description" placeholder="Price" onChange={handleChangeDrink} />
+                    <input type="text" value={newFormDrink.price} name="price" placeholder="Price" onChange={handleChangeDrink} />
+                    <h3>Quantity</h3>
+                    <input type="text" value={newFormDrink.quantity} name="quantity" placeholder="Quantity" onChange={handleChangeDrink} />
                 </div>
                 <br />
                 <input type="submit" value="Create Drink" className="post-button"/>

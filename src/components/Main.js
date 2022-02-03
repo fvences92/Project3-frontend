@@ -13,8 +13,8 @@ function Main(props) {
   const [foods, setFood] = useState(null)
   const [drinks, setDrink] = useState(null)
   //Importing Backend URL
-  const FURL = 'https://project-backend-3.herokuapp.com/meals'
-  const DURL = 'https://project-backend-3.herokuapp.com/drinks'
+  const FURL = 'https://project-backend-3.herokuapp.com/meals/'
+  const DURL = 'https://project-backend-3.herokuapp.com/drinks/'
 
   //fetching food from backend
   const getFood = async () => {
@@ -25,6 +25,14 @@ function Main(props) {
 
   // CREATE FOOD
   const createFood = async (eachFood) => {
+    console.log(eachFood)
+    await fetch(FURL, {
+      method: 'POST',
+      header: {
+        'Content-Type': 'Application/JSON',    
+      },
+      body: JSON.stringify(eachFood),
+    })
     // make post request to create foo
     // update list of food
     getFood();
@@ -67,15 +75,20 @@ function Main(props) {
 
   // CREATE DRINK
   const createDrink = async (eachDrink) => {
-    // make post request to create foo
-    // update list of food
-    getDrink();
+    await fetch (DURL, {
+      method: 'POST',
+      header: {
+        'Content-Type': 'Application/JSON',    
+      },
+      body: JSON.stringify(eachDrink),
+    })
+
   };
 
   // UPDATE Drink
   const updateDrinks = async (eachDrink, id) => {
     //make PUT request to update people
-    await fetch(DURL + id, {
+    await fetch(DURL, {
       method: "PUT",
       headers: {
         "Content-Type": "Application/JSON",
@@ -95,7 +108,7 @@ function Main(props) {
     // update list of Drink
     getDrink();
   }
-  
+
   useEffect(() => getDrink(), []);
 
   return (
@@ -138,11 +151,15 @@ function Main(props) {
               {...rp} />
           )}></Route>
 
-        <Route path='/new'>
-          <New createFood={createFood}
-            createDrink={createDrink} />
-
-        </Route><Route path='/about'>
+        <Route path='/new' render={(rp) =>
+        (
+          <New 
+            createFood={createFood}
+            createDrink={createDrink} 
+            {...rp} />
+        )}></Route>;
+      
+      <Route path='/about'>
           <About />
         </Route>
 

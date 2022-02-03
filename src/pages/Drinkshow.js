@@ -8,10 +8,18 @@ function Drinkshow (props){
     const drinko = drinks.find(p => p._id === id )
         
     
+    const removeDrinks = () => {
+        props.deleteDrinks(drinko._id); 
+        props.history.push ('/menu') 
+        }
+
     return (
         <div>
-            
-        <h1>{drinko._id}</h1>
+        <h1>{drinko.name}</h1>
+        <img src = {drinko.image} alt={drinko.name}></img>
+        <h2>{drinko.price}</h2>
+        <h3>{drinko.quantity}</h3>
+        <button id='delete' onClick={removeDrinks}>Delete</button>
         </div>
         )
     }

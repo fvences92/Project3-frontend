@@ -10,7 +10,7 @@ const Drinks = (props) => {
             <div key={eachDrink._id} className="home-container">
                 <div className="home-inner-container">
                     <div className="image-link">
-                        <Link to={`/drinks/${eachDrink._id}`} className="link-element">{eachDrink._id}</Link>
+                        <Link to={`/drinks/${eachDrink._id}`} className="link-element">{eachDrink.name}</Link>
                     </div>
                 </div>
                 <div className="footer-space-container">
