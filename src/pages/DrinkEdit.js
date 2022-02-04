@@ -25,7 +25,7 @@ const [ editForm, setEditForm ] = useState(drink);
   return (
     <div className="Drink">
       <h1>{drink.name}</h1>
-      <img src={drink.image} alt={drink.name} />
+      <img className="show-img" src={drink.image} alt={drink.name} />
       <form onSubmit={handleSubmitDrink}>
         <input
           type="text"

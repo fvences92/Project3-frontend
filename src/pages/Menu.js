@@ -7,14 +7,12 @@ const Menu = (props) => {
     // Loaded Function
     const loaded = () => {
         return props.foods.map((eachFood) => (
-            <div key={eachFood._id} className="home-container">
-                <div className="home-inner-container">
-                    <div className="image-link">
-                        <Link to={`/menu/${eachFood._id}`} className="link-element">{eachFood.recipeName} {eachFood.price}</Link>
+            <div key={eachFood._id} >
+                    <div className="menu-food">
+                        <Link to={`/menu/${eachFood._id}`} className="link-element">{eachFood.recipeName} </Link>
+                        <p>${eachFood.price}.00</p>
+                        <hr></hr>
                     </div>
-                </div>
-                <div className="footer-space-container">
-                </div>
             </div>
         ));
     };
@@ -28,10 +26,10 @@ const Menu = (props) => {
     }
     return (
 
-        <>
-        <h1>Food Menu Page</h1>
+        <div className="menu-container">
+        <h1>Food Menu </h1>
             {props.foods ? loaded() : loading()}
-        </>
+        </div>
     )
 };
 

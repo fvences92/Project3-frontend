@@ -15,7 +15,7 @@ function Home(props) {
     </div>
     <div className="homeDrinks">
     <Link to="/drinks">
-          <h3>Drinks</h3>
+          <h3>Drink Menu</h3>
           <img className="homepix" src="https://images.unsplash.com/photo-1457518919282-b199744eefd6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1472&q=80" alt="drinks" />
     </Link>
     </div>

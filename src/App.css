@@ -80,8 +80,58 @@ grid-row-gap: 0px;
   border-radius: 30px;
   border: 2px solid #0D3B66;
   padding: 10px;
-
 }
+
+.about-pic {
+  height: 500px;
+  width: auto;
+  border-radius: 30px;
+  border: 2px solid #F95738;
+  padding: 10px;
+}
+
+.menu-container{
+  color: #EE964B
+}
+
+.new-box{
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+grid-template-rows: 100px 1fr;
+grid-column-gap: 0px;
+grid-row-gap: 0px;
+}
+
+.title-box{
+  color: #EE964B;
+  grid-area: 1 / 1 / 2 / 3;
+}
+
+.new-food{
+  grid-area: 2 / 1 / 3 / 2;
+}
+
+.new-drink{
+  grid-area: 2 / 2 / 3 / 3;
+}
+
+.input-boxes{
+  color: #EE964B;
+}
+.show-img {
+  height: 500px;
+  width: auto;
+  border-radius: 30px;
+  border: 2px solid #F95738;
+  padding: 10px;
+}
+
+hr {
+  width: 40%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 
 .footer {
   grid-area: 3 / 1 / 4 / 2;

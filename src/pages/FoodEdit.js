@@ -24,20 +24,20 @@ const [ editForm, setEditForm ] = useState(recipe);
 
   return (
     <div className="FoodEdit">
-      <h1>{recipe.name}</h1>
-      <img src={recipe.recipeThumb} alt={recipe.name} />
+      <h1>{recipe.recipeName}</h1>
+      <img className="show-img" src={recipe.recipeThumb} alt={recipe.recipeName} />
       <form onSubmit={handleSubmitFood}>
         <input
           type="text"
-          value={editForm.name}
-          name="name"
+          value={editForm.recipeName}
+          name="recipeName"
           placeholder="name"
           onChange={handleChangeFood}
         />
         <input
           type="text"
           value={editForm.recipeThumb}
-          name="image"
+          name="recipeThumb"
           placeholder="image URL"
           onChange={handleChangeFood}
         />
@@ -51,7 +51,7 @@ const [ editForm, setEditForm ] = useState(recipe);
         <input
           type="text"
           value={editForm.qty}
-          name="quantity"
+          name="qty"
           placeholder="quantity"
           onChange={handleChangeFood}
         />

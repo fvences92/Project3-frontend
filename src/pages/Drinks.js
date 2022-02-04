@@ -8,13 +8,11 @@ const Drinks = (props) => {
     const loaded = () => {
         return props.drinks.map((eachDrink) => (
             <div key={eachDrink._id} className="home-container">
-                <div className="home-inner-container">
                     <div className="image-link">
                         <Link to={`/drinks/${eachDrink._id}`} className="link-element">{eachDrink.name}</Link>
+                        <p>${eachDrink.price}.00</p>
+                        <hr></hr>
                     </div>
-                </div>
-                <div className="footer-space-container">
-                </div>
             </div>
         ));
     };
@@ -28,10 +26,10 @@ const Drinks = (props) => {
     }
     return (
 
-        <>
-        <h1>Drink Page</h1>
+        <div className="menu-container">
+        <h1>Drink Menu</h1>
             {props.drinks ? loaded() : loading()}
-        </>
+        </div>
     )
 };
 

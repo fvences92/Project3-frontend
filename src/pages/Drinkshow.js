@@ -16,12 +16,12 @@ function Drinkshow (props){
     return (
         <div>
         <h1>{drinko.name}</h1>
-        <img src = {drinko.image} alt={drinko.name}></img>
-        <h2>{drinko.price}</h2>
-        <h3>{drinko.quantity}</h3>
-        <button id='delete' onClick={removeDrinks}>Delete</button>
+        <img className="show-img" src = {drinko.image} alt={drinko.name}></img>
+        <h2>Price: ${drinko.price}.00</h2>
+        <h3>We have {drinko.quantity} in stock.</h3>
         <Link to ={`${drinko._id}/edit`}><button>Edit</button></Link
         >
+        <button id='delete' onClick={removeDrinks}>Delete</button>
         </div>
         )
     }

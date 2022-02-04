@@ -60,8 +60,9 @@ const New = (props) => {
     return (
         <div className="new-box">
             <div className="title-box">
-                <h1>New Meal Form</h1>
+                <h1>New Addition Form</h1>
             </div>
+            <div className="new-food">
             <form onSubmit={handleSubmitFood}>
                 <div className="input-boxes">
                     <h3>Meal</h3>
@@ -76,8 +77,10 @@ const New = (props) => {
                 <br />
                 <input type="submit" value="Create Meal" className="post-button"/>
             </form>
+            </div>
+            <div className="new-drink">
             <form onSubmit={handleSubmitDrinks}>
-                <div className="input-boxes1">
+                <div className="input-boxes">
                     <h3>Drinks</h3>
                     <input type="text" value={newFormDrink.name} name="name" placeholder="Name" onChange={handleChangeDrink} />
                     <h3>Image</h3>
@@ -90,6 +93,7 @@ const New = (props) => {
                 <br />
                 <input type="submit" value="Create Drink" className="post-button"/>
             </form>
+            </div>
         </div>
     )
 };
