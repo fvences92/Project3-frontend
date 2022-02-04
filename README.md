@@ -1,6 +1,6 @@
 # MERNu
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A full Crud react app to help a restaurant display their menu online.
 
 ## Technologies Used
 
