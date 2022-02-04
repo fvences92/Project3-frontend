@@ -14,7 +14,7 @@ A full Crud react app to help a restaurant display their menu online.
 - Sass
 
 ## Screenshots
-
+![App Screenshot](https://i.imgur.com/ZgNclBX.png)
 
 ## Getting Started
 
