@@ -21,4 +21,5 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 [Link](https://project-backend-3.herokuapp.com/meals) to see the backend!
 
 ## Future Enhancements
+- Add in Authentications and Authorizations
 
