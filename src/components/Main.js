@@ -114,7 +114,7 @@ function Main(props) {
   useEffect(() => getDrink(), []);
 
   return (
-    <main>
+    <div className="main">
       <Switch>
         <Route exact path='/'>
           <Home />
@@ -182,7 +182,7 @@ function Main(props) {
 
 
       </Switch>
-    </main>
+    </div>
 
   );
 }
